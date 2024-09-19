@@ -27,9 +27,13 @@ export const authOptions = {
         });
 
         if (existingUser) {
+
+
           console.log("password from db", existingUser.password);
           console.log("Raw password from user", credentials.password);
           console.log("Hashed password from user", hashedPassword);
+
+
           const passwordValidation = await bcrypt.compare(
             credentials.password,
             existingUser.password
@@ -44,6 +48,8 @@ export const authOptions = {
           }
 
           return null;
+
+
         }
 
         try {
@@ -59,10 +65,10 @@ export const authOptions = {
             name: user.name,
             email: user.number,
           };
-        } catch (e) {
+        }
+        catch (e) {
           console.error(e);
         }
-
         return null;
       },
     }),
